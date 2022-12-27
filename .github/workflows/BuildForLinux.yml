@@ -36,6 +36,7 @@ jobs:
       - name: test
         run: |
           ls && pwd
+          ls ./fkit/
 
       - name: Build
         uses: crazy-max/ghaction-xgo@v2
