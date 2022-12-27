@@ -48,3 +48,5 @@ jobs:
           ldflags: -s -w
           buildmode: default
           trimpath: true
+
+          
