@@ -49,5 +49,5 @@ jobs:
           buildmode: default
           trimpath: true
         run: |
-        pwd
+          pwd
 
