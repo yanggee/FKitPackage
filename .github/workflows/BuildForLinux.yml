@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ElectronBuild for Linux
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  BuildForUbuntu:
+    runs-on: Ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        name: 'Checkout'
+
+      - name: Clone and package
+        run: | 
+          git clone https://tentech:${{secrets.token}}@gitee.com/tentech/fkit.git
+          cd ./fkit
+          mkdir dist
+          mkdir dist/fkit_windows_386
+          mkdir dist/fkit_windows_amd64
+          mkdir dist/fkit_linux_386
+          mkdir dist/fkit_linux_amd64
+          mkdir dist/fkit_linux_arm64
+          mkdir dist/fkit_darwin_amd64
+          mkdir dist/fkit_darwin_arm64
+
+      - name: Build
+        uses: crazy-max/ghaction-xgo@v2
+        with:
+          xgo_version: latest
+          go_version: 1.18
+          dest: dist
+          prefix: fkit
+          targets: windows/386,windows/amd64,linux/amd64,linux/arm64,darwin/arm64,darwin/amd64
+          v: true
+          x: false
+          race: false
+          ldflags: -s -w
+          buildmode: default
+          trimpath: true
