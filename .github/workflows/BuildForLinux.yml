@@ -61,6 +61,7 @@ jobs:
       - name: Upload Package
         run: |
           cd ./fkit
+          ls -la ./dist/
           ls -la ./fkit/dist/ && pwd
 
           mv ./dist/fkit-windows-386.exe dist/fkit_windows_386/fkit.exe
