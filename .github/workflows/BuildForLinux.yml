@@ -33,14 +33,15 @@ jobs:
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/fkit.git
           cd ./fkit
-          mkdir dist
-          mkdir dist/fkit_windows_386
-          mkdir dist/fkit_windows_amd64
-          mkdir dist/fkit_linux_386
-          mkdir dist/fkit_linux_amd64
-          mkdir dist/fkit_linux_arm64
-          mkdir dist/fkit_darwin_amd64
-          mkdir dist/fkit_darwin_arm64
+          mkdir -p dist
+          mkdir -p dist/fkit_windows_386
+          mkdir -p dist/fkit_windows_amd64
+          mkdir -p dist/fkit_linux_386
+          mkdir -p dist/fkit_linux_amd64
+          mkdir -p dist/fkit_linux_arm64
+          mkdir -p dist/fkit_darwin_amd64
+          mkdir -p dist/fkit_darwin_arm64
+          ls dist
 
       - name: Build
         uses: crazy-max/ghaction-xgo@v2
