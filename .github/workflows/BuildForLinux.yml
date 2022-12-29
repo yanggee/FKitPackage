@@ -20,11 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: 'Checkout'
-
-      - name: Install Dependencies
-        run: |
-
-
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/fkit.git
