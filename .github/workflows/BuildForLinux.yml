@@ -21,6 +21,14 @@ jobs:
       - uses: actions/checkout@v3
         name: 'Checkout'
 
+      - name: Install Dependencies
+        run: |
+          sudo apt install curl
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
+          sudo chmod 777 ossutil
+          ls && pwd
+          ls ./fkit/
+          sudo ln -s ./ossutil /usr/bin/
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/fkit.git
@@ -49,14 +57,6 @@ jobs:
           buildmode: default
           trimpath: true
           working_dir: ./fkit/
-      - name: test
-        run: |
-          sudo apt install curl
-          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
-          sudo chmod 777 ossutil
-          ls && pwd
-          ls ./fkit/
-          sudo ln -s ./ossutil /usr/bin/
       - name: Upload Package
         run: |
           cd ./fkit
