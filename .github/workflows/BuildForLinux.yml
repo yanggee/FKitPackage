@@ -49,7 +49,7 @@ jobs:
           go_version: 1.18
           dest: ./fkit/dist/
           prefix: fkit
-          targets: windows/386,windows/amd64,linux/amd64,linux/arm64,darwin/arm64,darwin/amd64
+          targets: windows/386,windows/amd64,linux/386,linux/amd64,linux/arm64,darwin/arm64,darwin/amd64
           v: true
           x: false
           race: false
@@ -61,13 +61,13 @@ jobs:
         run: |
           cd ./fkit
           ls ./fkit/dist/
-          mv dist/fkit-windows-4.0-386.exe dist/fkit_windows_386/fkit.exe
-          mv dist/fkit-windows-4.0-amd64.exe dist/fkit_windows_amd64/fkit.exe
+          mv dist/fkit-windows-386.exe dist/fkit_windows_386/fkit.exe
+          mv dist/fkit-windows-amd64.exe dist/fkit_windows_amd64/fkit.exe
           mv dist/fkit-linux-386 dist/fkit_linux_386/fkit
           mv dist/fkit-linux-amd64 dist/fkit_linux_amd64/fkit
           mv dist/fkit-linux-arm64 dist/fkit_linux_arm64/fkit
-          mv dist/fkit-darwin-10.12-amd64 dist/fkit_darwin_amd64/fkit
-          mv dist/fkit-darwin-10.12-arm64 dist/fkit_darwin_arm64/fkit
+          mv dist/fkit-darwin-amd64 dist/fkit_darwin_amd64/fkit
+          mv dist/fkit-darwin-arm64 dist/fkit_darwin_arm64/fkit
           cd dist/
           zip -r fkit.zip ./fkit_windows_386/
           ossutil64 -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_windows_386/fkit.zip
