@@ -56,7 +56,7 @@ jobs:
           sudo chmod 777 ossutil
           ls && pwd
           ls ./fkit/
-          ln -s ./ossutil /usr/bin/
+          sudo ln -s ./ossutil /usr/bin/
       - name: Upload Package
         run: |
           cd ./fkit
