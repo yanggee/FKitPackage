@@ -23,11 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt install curl
-          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
-          sudo chmod 777 ossutil
-          ls && pwd
-          sudo ln -s ./ossutil /usr/bin/
+
 
       - name: Clone and package
         run: | 
@@ -69,32 +65,36 @@ jobs:
           mv ./dist/fkit-darwin-amd64 dist/fkit_darwin_amd64/fkit
           mv ./dist/fkit-darwin-arm64 dist/fkit_darwin_arm64/fkit
           cd dist/
+          sudo apt install curl
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
+          sudo chmod 777 ossutil
+          ls && pwd
           zip -r fkit.zip ./fkit_windows_386/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_windows_386/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_windows_386/fkit.zip
           rm fkit.zip
           
           zip -r fkit.zip ./fkit_windows_amd64/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_windows_amd64/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_windows_amd64/fkit.zip
           rm fkit.zip
 
           zip -r fkit.zip ./fkit_linux_386/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_386/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_386/fkit.zip
           rm fkit.zip
 
           zip -r fkit.zip ./fkit_linux_amd64/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_amd64/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_amd64/fkit.zip
           rm fkit.zip
 
           zip -r fkit.zip ./fkit_linux_arm64/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_arm64/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_linux_arm64/fkit.zip
           rm fkit.zip
 
           zip -r fkit.zip ./fkit_darwin_amd64/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_darwin_amd64/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_darwin_amd64/fkit.zip
           rm fkit.zip
 
           zip -r fkit.zip ./fkit_darwin_arm64/
-          ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_darwin_arm64/fkit.zip
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} -e oss-cn-hangzhou.aliyuncs.com cp -f ./fkit.zip oss://flowhub-master/publish/fkit_darwin_arm64/fkit.zip
 
 
 
