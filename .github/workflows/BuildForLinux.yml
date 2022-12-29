@@ -28,6 +28,7 @@ jobs:
           sudo chmod 777 ossutil
           ls && pwd
           sudo ln -s ./ossutil /usr/bin/
+
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/fkit.git
@@ -59,7 +60,7 @@ jobs:
       - name: Upload Package
         run: |
           cd ./fkit
-          ls && pwd
+          ls ./fkit/dist/
           mv dist/fkit-windows-4.0-386.exe dist/fkit_windows_386/fkit.exe
           mv dist/fkit-windows-4.0-amd64.exe dist/fkit_windows_amd64/fkit.exe
           mv dist/fkit-linux-386 dist/fkit_linux_386/fkit
